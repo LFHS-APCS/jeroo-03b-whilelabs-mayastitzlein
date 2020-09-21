@@ -33,12 +33,15 @@ public class Jeroo extends JerooBase {
      */
     public void clearFlowersToWater() 
     {
-        // while(<test>) //Step 2: Use the opposite of Step 1's result as the <test>
+        while (!isWater(AHEAD))// while(<test>) //Step 2: Use the opposite of Step 1's result as the <test>
         {
-            // Step 3:  Make progress towards the goal inside the loop
+           if (isFlower(HERE)) {
+             this.pick();
+           }
+           hop(); // Step 3:  Make progress towards the goal inside the loop
             
         }
-        // Step 1:  At the end of the while loop, what should be true?
+        // Step 1:  At the end of the while loop, what should be true? there should be water in front of the Jeroo
         
     }
 
@@ -50,7 +53,9 @@ public class Jeroo extends JerooBase {
      * 3.  Make progress towards the goal within the loop.
      */
     public void faceNorth() {
-
+        while (!isFacing(NORTH)) {
+          turn(RIGHT);
+        }
     }
 
     /**
@@ -58,7 +63,7 @@ public class Jeroo extends JerooBase {
      * no matter where it is or which way it is facing.
      */
     public void goToOrigin() {
-
+        while ()
     }
 
     /**
