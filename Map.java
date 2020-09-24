@@ -54,6 +54,10 @@ public class Map {
     public void addJeroo(Jeroo j) {
         jeroos.add(j);
     }
+    
+    public void removeJeroo(Jeroo j) {
+        jeroos.remove(j);
+    }
 
     public ArrayList<Jeroo> getJeroos() {
         return jeroos;

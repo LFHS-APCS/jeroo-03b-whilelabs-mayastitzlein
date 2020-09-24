@@ -16,7 +16,13 @@ public class Jeroo extends JerooBase {
     {
         while (!isNet(AHEAD)) // Step 2: Iterate the opposite of Step 1
         {
-            hop();  // Step 3:  Make progress towards the goal
+          if (!isWater(AHEAD)) {
+            hop();
+          }
+          else {
+            turn(LEFT);
+          }
+            // Step 3:  Make progress towards the goal
         }
         // Step 1:  At the end, there should be a net in front
     }
@@ -38,8 +44,10 @@ public class Jeroo extends JerooBase {
            if (isFlower(HERE)) {
              this.pick();
            }
-           hop(); // Step 3:  Make progress towards the goal inside the loop
-            
+           this.hop(); // Step 3:  Make progress towards the goal inside the loop 
+        }
+        if (isFlower(HERE)) {
+          this.pick();
         }
         // Step 1:  At the end of the while loop, what should be true? there should be water in front of the Jeroo
         
@@ -63,7 +71,26 @@ public class Jeroo extends JerooBase {
      * no matter where it is or which way it is facing.
      */
     public void goToOrigin() {
-        while ()
+      this.faceNorth();
+      while (!isWater(AHEAD)) {
+        hop();
+      }
+      this.turn(LEFT);
+      while (!isWater(AHEAD)) {
+        hop();
+      }
+      // isWater(AHEAD)
+      /*
+      if (isFacing(WEST)) {
+        while (!isWater(AHEAD)) {
+          while (!isWater(LEFT)) {
+            if(!isNet(AHEAD)) {
+              hop();
+            }
+          }
+        }
+      }
+      */
     }
 
     /**
@@ -72,7 +99,26 @@ public class Jeroo extends JerooBase {
      * The Jeroo should stop as soon as there is a net in front of it.       
      */
     public void meander() {
-
+      if(isFlower(HERE)) {
+        this.pick();
+      }
+      while (!isNet(AHEAD)) {
+        if(isFlower(AHEAD)) {
+          this.hop();
+          this.pick();
+        }
+        else if (isFlower(LEFT)) {
+          this.turn(LEFT);
+          this.hop();
+          this.pick();
+        }
+        else if (isFlower(RIGHT)) {
+          this.turn(RIGHT);
+          this.hop();
+          this.pick();
+        }
+        
+      }
     }
 
     // Do NOT touch the code below here

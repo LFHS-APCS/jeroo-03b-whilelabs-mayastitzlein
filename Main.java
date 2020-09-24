@@ -21,7 +21,7 @@ public class Main implements Directions {
         TestMain test = new TestMain();
         test.setup();
         test.test1_faceNorth();
-        test.test2_goToOrigin();
+        //test.test2_goToOrigin();
         test.test3_meander();
     }
 
